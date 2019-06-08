@@ -1,0 +1,3 @@
+rootProject.name = 'MinhaSenaApp'
+
+include ':app'
