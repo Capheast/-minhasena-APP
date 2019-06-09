@@ -43,6 +43,8 @@
 		5E49672DE9EE4EBAA0262C2D /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A3DA87BDCD4AE68E20B30D /* libRNGestureHandler-tvOS.a */; };
 		A295902D71734D84AB6AAAF5 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E15FB317FAC14D21936DAF1C /* libRNSVG.a */; };
 		DEA58A0933E044D8A74722E5 /* libRNSVG-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FDBC249FF84F1986EA2D39 /* libRNSVG-tvOS.a */; };
+		1FB1887D3B8C4EDD8989FFDC /* HelveticaNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15305C1614AC4867A33BE348 /* HelveticaNeue-Bold.ttf */; };
+		B6F3D6B797E54FB3A647772A /* HelveticaNeue-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D31D26A313D45F8959393E1 /* HelveticaNeue-Medium.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -356,6 +358,8 @@
 		3EE337F52BDC40B6849E5064 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; name = "RNSVG.xcodeproj"; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		E15FB317FAC14D21936DAF1C /* libRNSVG.a */ = {isa = PBXFileReference; name = "libRNSVG.a"; path = "libRNSVG.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		92FDBC249FF84F1986EA2D39 /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; name = "libRNSVG-tvOS.a"; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		15305C1614AC4867A33BE348 /* HelveticaNeue-Bold.ttf */ = {isa = PBXFileReference; name = "HelveticaNeue-Bold.ttf"; path = "../src/assets/fonts/HelveticaNeue/HelveticaNeue-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5D31D26A313D45F8959393E1 /* HelveticaNeue-Medium.otf */ = {isa = PBXFileReference; name = "HelveticaNeue-Medium.otf"; path = "../src/assets/fonts/HelveticaNeue/HelveticaNeue-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -600,6 +604,7 @@
 				00E356EF1AD99517003FC87E /* MinhaSenaAppTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				4DC5F5FCBF794EDDA10D76C4 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -625,6 +630,16 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		4DC5F5FCBF794EDDA10D76C4 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				15305C1614AC4867A33BE348 /* HelveticaNeue-Bold.ttf */,
+				5D31D26A313D45F8959393E1 /* HelveticaNeue-Medium.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -1072,6 +1087,8 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				1FB1887D3B8C4EDD8989FFDC /* HelveticaNeue-Bold.ttf in Resources */,
+				B6F3D6B797E54FB3A647772A /* HelveticaNeue-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
