@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import LotteryCard from '../LotteryCard';
-import { CapText } from '../ui';
+import { CapText } from '../../ui';
 
 const cardHeader = (title, index) => {
   const isFirst = index === 0;

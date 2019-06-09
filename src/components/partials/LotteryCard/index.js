@@ -2,8 +2,8 @@ import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import PropTypes from 'prop-types';
 import Style from './style';
-import FourLeafClover from '../../assets/images/FourLeafClover.svg';
-import { CapText } from '../ui';
+import FourLeafClover from '../../../assets/images/FourLeafClover.svg';
+import { CapText } from '../../ui';
 
 export default function LotteryCard({ backgroundColor, title, subTitle }) {
   return (
