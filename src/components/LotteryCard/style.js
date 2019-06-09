@@ -19,15 +19,6 @@ export const style = (color = null) => ({
     position: 'absolute',
     right: 0,
     top: 0
-  },
-  title: {
-    fontSize: 24,
-    color: '#fff',
-    fontWeight: 'bold'
-  },
-  subTitle: {
-    fontSize: 16,
-    color: '#fff',
   }
 });
 
