@@ -4,6 +4,7 @@ export const style = (color = null) => ({
     paddingHorizontal: 12,
     paddingBottom: 12,
     borderRadius: 8,
+    marginBottom: 16,
     backgroundColor: color
   },
   container: {

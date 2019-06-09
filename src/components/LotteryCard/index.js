@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
+import PropTypes from 'prop-types';
 import Style from './style';
 import FourLeafClover from '../../assets/images/FourLeafClover.svg';
 
@@ -18,3 +19,9 @@ export default function LotteryCard({ backgroundColor, title, subTitle }) {
     </TouchableOpacity>
   );
 }
+
+LotteryCard.propTypes = {
+  backgroundColor: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string.isRequired
+};
