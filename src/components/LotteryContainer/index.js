@@ -4,14 +4,23 @@ import PropTypes from 'prop-types';
 import LotteryCard from '../LotteryCard';
 import { CapText } from '../ui';
 
+const cardHeader = (title, index) => {
+  const isFirst = index === 0;
+  return (
+    <CapText title={isFirst} big={!isFirst} bold top={isFirst ? 0 : 16} bottom={16}>
+      {title}
+    </CapText>
+  );
+};
+
 export default function LotteryContainer({ lotteries }) {
   return (
     <ScrollView>
-      {lotteries && lotteries.map(lottery => (
+      {lotteries && lotteries.map((lottery, index) => (
         <FlatList
           key={lottery.title}
           data={lottery.items}
-          ListHeaderComponent={() => <CapText title bold bottom={16}>{lottery.title}</CapText>}
+          ListHeaderComponent={() => cardHeader(lottery.title, index)}
           renderItem={({ item }) => (
             <LotteryCard
               title={item.title}
