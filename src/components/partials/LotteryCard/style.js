@@ -1,9 +1,9 @@
-export const style = (color = null) => ({
+export const style = (color = null, border) => ({
   card: {
     minHeight: 120,
     paddingHorizontal: 12,
     paddingBottom: 12,
-    borderRadius: 8,
+    borderRadius: border ? 8 : 0,
     marginBottom: 16,
     backgroundColor: color
   },
