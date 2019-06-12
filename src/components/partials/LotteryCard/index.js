@@ -11,7 +11,7 @@ function LotteryCard({
   navigation, backgroundColor, border, title, subTitle
 }) {
   return (
-    <Transition appear="flip" disappear="top" shared={title}>
+    <Transition shared={title}>
       <TouchableWithoutFeedback
         onPress={() => navigation.navigate('Lottery',
           { title, subTitle, backgroundColor })}
