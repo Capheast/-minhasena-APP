@@ -18,3 +18,12 @@ export const CapText = glamorous.text(props => ({
         : props.normal
           ? 16 : 12
 }));
+
+export const Divider = glamorous.view(props => ({
+  height: 1,
+  backgroundColor: props.color || Colors.divider,
+  marginTop: props.margin ? props.margin : props.vertical ? props.vertical : props.top || 0,
+  marginBottom: props.margin ? props.margin : props.vertical ? props.vertical : props.bottom || 0,
+  marginRight: props.margin ? props.margin : props.horizontal ? props.horizontal : props.right || 0,
+  marginLeft: props.margin ? props.margin : props.horizontal ? props.horizontal : props.left || 0,
+}));
