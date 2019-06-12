@@ -6,9 +6,6 @@ import LotteryScreen from './screens/LotteryScreen';
 const MainNavigator = FluidNavigator({
   Home: {
     screen: HomeScreen,
-    navigationOptions: {
-      header: null
-    }
   },
   Lottery: {
     screen: LotteryScreen
