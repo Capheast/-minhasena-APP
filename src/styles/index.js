@@ -1,6 +1,7 @@
 export default {
   container: {
-    margin: 24
+    marginTop: 56,
+    marginHorizontal: 24
   },
   headerTitle: {
     color: '#000',
