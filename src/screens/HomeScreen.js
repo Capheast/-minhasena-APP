@@ -1,5 +1,6 @@
-import React from 'react';
-import { SafeAreaView } from 'react-native';
+import React, { useLayoutEffect } from 'react';
+import { ScrollView, SafeAreaView, StatusBar } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import Styles from '../styles';
 import LotteryContainer from '../components/partials/LotteryContainer';
 
@@ -30,10 +31,20 @@ const lotteries = [{
   }]
 }];
 
-export default function App() {
+function App({ navigation }) {
+  useLayoutEffect(() => {
+    navigation.addListener('willFocus', () => {
+      StatusBar.setBarStyle('dark-content');
+    });
+  });
+
   return (
-    <SafeAreaView style={Styles.container}>
-      <LotteryContainer lotteries={lotteries} />
+    <SafeAreaView style={{ backgroundColor: '#FFF' }}>
+      <ScrollView showsVerticalScrollIndicator={false} style={Styles.container}>
+        <LotteryContainer lotteries={lotteries} />
+      </ScrollView>
     </SafeAreaView>
   );
 }
+
+export default withNavigation(App);
