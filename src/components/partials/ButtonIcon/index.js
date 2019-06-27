@@ -9,7 +9,7 @@ export const ButtonIcon = ({
     return (
         <TouchableOpacity
             style={{background: '#0000001A'}}
-            onPress={() => onPress}
+            onPress={onPress}
         >
             <View
                 style={{
