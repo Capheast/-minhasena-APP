@@ -9,25 +9,29 @@ const lotteries = [{
   items: [{
     title: 'Mega Sena',
     subTitle: 'Sorteio atual de R$180 milhões',
-    color: '#00B758'
+    color: '#00B758',
+    defaultSize: 6
   }, {
     title: 'Quina',
     subTitle: 'Sorteio atual de R$80 mil',
-    color: '#42338B'
+    color: '#42338B',
+    defaultSize: 5
   }]
 }, {
   title: 'Fique de olho',
   items: [{
     title: 'Lotofácil',
     subTitle: 'Sorteio atual de R$420 mil',
-    color: '#AB1D88'
+    color: '#AB1D88',
+    defaultSize: 10
   }]
 }, {
   title: 'Outros',
   items: [{
     title: 'Dupla Sena',
     subTitle: 'Sorteio atual de R$180 milhões',
-    color: '#A20635'
+    color: '#A20635',
+    defaultSize: 10
   }]
 }];
 

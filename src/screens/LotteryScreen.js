@@ -1,8 +1,12 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { StatusBar, ScrollView, View } from 'react-native';
 import LotteryCard from '../components/partials/LotteryCard';
 import NumberDraw from '../components/partials/NumberDrawn';
 import { CapText, Divider } from '../components/ui';
+import { MSButton } from '../components/partials/MSButton';
+import ConfigWhell from '../assets/images/ConfigWhell.svg';
+import { ButtonIcon } from '../components/partials/ButtonIcon';
+import { ConfigurationModal } from '../components/partials/ConfigurationModal';
 
 export default function LotteryScreen({ navigation }) {
   const title = navigation.getParam('title');
@@ -14,9 +18,15 @@ export default function LotteryScreen({ navigation }) {
       StatusBar.setBarStyle('light-content');
     });
   });
+  const [modalVisible, setModalVisible] = useState(false);
+
+  function mudar() {
+    setModalVisible(true);
+  }
 
   return (
     <ScrollView>
+      <ConfigurationModal isVisible={modalVisible} />
       <View style={{ height: 56, backgroundColor: bgColor }} />
       <LotteryCard border={false} title={title} subTitle={subTitle} backgroundColor={bgColor} />
       <View style={{ marginHorizontal: 24 }}>
@@ -44,6 +54,17 @@ export default function LotteryScreen({ navigation }) {
           <NumberDraw number="58" bgColor={bgColor} />
           <NumberDraw number="60" bgColor={bgColor} />
         </View>
+      </View>
+      <View style={{
+        marginTop: 40,
+        padding: 24,
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center'
+      }}
+      >
+        <MSButton title="Gerar novo" background={bgColor} />
+        <ButtonIcon icon={<ConfigWhell />} onPress={mudar} />
       </View>
     </ScrollView>
   );
