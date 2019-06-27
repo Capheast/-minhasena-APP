@@ -56,11 +56,9 @@ export default function LotteryScreen({ navigation }) {
         </View>
       </View>
       <View style={{
-        marginTop: 40,
-        padding: 24,
-        flex: 1,
+        paddingHorizontal: 24,
         flexDirection: 'row',
-        alignItems: 'center'
+        justifyContent: 'space-between'
       }}
       >
         <MSButton title="Gerar novo" background={bgColor} />
