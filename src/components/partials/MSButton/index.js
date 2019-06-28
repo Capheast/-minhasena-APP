@@ -12,22 +12,44 @@ export const MSButton = ({ onPress = () => {}, title = '', background = ''}) => 
   </TouchableOpacity>
 );
 
-const styles = colorPrimer => ({
-  container: {
-    backgroundColor: `${colorPrimer}1A`,
-    height: 50,
-    margin: 10,
-    width: 246,
-    borderRadius: 8
-  },
-  button: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: colorPrimer,
-    fontWeight: '500',
-    opacity: 1
+const styles = colorPrimer => {
+  if (colorPrimer.length === 0){
+      return {
+          container: {
+              height: 50,
+              margin: 10,
+              width: 246,
+              borderRadius: 8
+          },
+          button: {
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+          },
+          text: {
+              fontWeight: '500',
+              opacity: 1
+          }
+      }
   }
-});
+  return {
+      container: {
+          backgroundColor: `${colorPrimer}1A`,
+          height: 50,
+          margin: 10,
+          width: 246,
+          borderRadius: 8
+      },
+      button: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+      },
+      text: {
+          color: colorPrimer,
+          fontWeight: '500',
+          opacity: 1
+      }
+  }
+
+};
