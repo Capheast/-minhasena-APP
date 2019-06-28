@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import LotteryCard from '../LotteryCard';
 import { CapText } from '../../ui';
@@ -15,7 +15,7 @@ const cardHeader = (title, index) => {
 
 export default function LotteryContainer({ lotteries }) {
   return (
-    <ScrollView>
+    <View>
       {lotteries && lotteries.map((lottery, index) => (
         <FlatList
           key={lottery.title}
@@ -31,8 +31,8 @@ export default function LotteryContainer({ lotteries }) {
           keyExtractor={item => item.title}
         />
       ))
-      }
-    </ScrollView>
+        }
+    </View>
   );
 }
 

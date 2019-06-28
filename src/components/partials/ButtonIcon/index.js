@@ -1,6 +1,5 @@
-import {TouchableOpacity, View} from "react-native";
-import React from "react";
-
+import {TouchableOpacity, View} from 'react-native';
+import React from 'react';
 
 export const ButtonIcon = ({icon, onPress}) => {
     return (
