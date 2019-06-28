@@ -2,10 +2,7 @@ import {TouchableOpacity, View} from "react-native";
 import React from "react";
 
 
-export const ButtonIcon = ({
-                               icon, onPress = () => {
-    }
-                           }) => {
+export const ButtonIcon = ({icon, onPress}) => {
     return (
         <TouchableOpacity
             style={{background: '#0000001A'}}
