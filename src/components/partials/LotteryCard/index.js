@@ -8,15 +8,16 @@ import FourLeafClover from '../../../assets/images/FourLeafClover.svg';
 import { CapText } from '../../ui';
 
 function LotteryCard({
-  navigation, backgroundColor, border, title, subTitle
+  navigation, lottery, border
 }) {
+  const { title, subTitle, color } = lottery;
+
   return (
     <Transition shared={title}>
       <TouchableWithoutFeedback
-        onPress={() => navigation.navigate('Lottery',
-          { title, subTitle, backgroundColor })}
+        onPress={() => navigation.navigate('Lottery', { lottery })}
       >
-        <View style={Style(backgroundColor, border).card}>
+        <View style={Style(color, border).card}>
           <View shared="card" style={Style().container}>
             <View style={Style().textContainer}>
               <CapText big bold secondary>{title}</CapText>
@@ -33,10 +34,8 @@ function LotteryCard({
 }
 
 LotteryCard.propTypes = {
-  backgroundColor: PropTypes.string.isRequired,
+  lottery: PropTypes.objectOf(PropTypes.any).isRequired,
   border: PropTypes.bool,
-  title: PropTypes.string.isRequired,
-  subTitle: PropTypes.string.isRequired
 };
 
 LotteryCard.defaultProps = {
