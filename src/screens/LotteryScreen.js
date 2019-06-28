@@ -20,13 +20,13 @@ export default function LotteryScreen({ navigation }) {
   });
   const [modalVisible, setModalVisible] = useState(false);
 
-  function mudar() {
-    setModalVisible(true);
+  function toggle() {
+    setModalVisible(!modalVisible);
   }
 
   return (
     <ScrollView>
-      <ConfigurationModal isVisible={modalVisible} />
+      <ConfigurationModal isVisible={modalVisible} toggle={toggle}/>
       <View style={{ height: 56, backgroundColor: bgColor }} />
       <LotteryCard border={false} title={title} subTitle={subTitle} backgroundColor={bgColor} />
       <View style={{ marginHorizontal: 24 }}>
@@ -62,7 +62,7 @@ export default function LotteryScreen({ navigation }) {
       }}
       >
         <MSButton title="Gerar novo" background={bgColor} />
-        <ButtonIcon icon={<ConfigWhell />} onPress={mudar} />
+        <ButtonIcon icon={<ConfigWhell />} onPress={toggle} />
       </View>
     </ScrollView>
   );
