@@ -26,7 +26,6 @@ export default function LotteryScreen({ navigation }) {
 
   return (
     <ScrollView>
-      <ConfigurationModal isVisible={modalVisible} toggle={toggle}/>
       <View style={{ height: 56, backgroundColor: bgColor }} />
       <LotteryCard border={false} title={title} subTitle={subTitle} backgroundColor={bgColor} />
       <View style={{ marginHorizontal: 24 }}>
@@ -64,6 +63,7 @@ export default function LotteryScreen({ navigation }) {
         <MSButton title="Gerar novo" background={bgColor} />
         <ButtonIcon icon={<ConfigWhell />} onPress={toggle} />
       </View>
+        <ConfigurationModal isVisible={modalVisible} toggle={toggle}/>
     </ScrollView>
   );
 }
