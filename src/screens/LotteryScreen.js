@@ -1,17 +1,17 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { StatusBar, ScrollView, View } from 'react-native';
 import LotteryCard from '../components/partials/LotteryCard';
-import NumberDraw from '../components/partials/NumberDrawn';
 import { CapText, Divider } from '../components/ui';
 import { MSButton } from '../components/partials/MSButton';
 import ConfigWhell from '../assets/images/ConfigWhell.svg';
 import { ButtonIcon } from '../components/partials/ButtonIcon';
 import { ConfigurationModal } from '../components/partials/ConfigurationModal';
+import NumberContainer from '../components/partials/NumberContainer';
 
 export default function LotteryScreen({ navigation }) {
-  const title = navigation.getParam('title');
-  const subTitle = navigation.getParam('subTitle');
-  const bgColor = navigation.getParam('backgroundColor');
+  const lottery = navigation.getParam('lottery');
+  const { color, numbersDrawn } = lottery;
+  const selectedNumbers = [3, 15, 29, 33, 41, 54, 58, 60];
 
   useLayoutEffect(() => {
     navigation.addListener('willFocus', () => {
@@ -20,39 +20,22 @@ export default function LotteryScreen({ navigation }) {
   });
   const [modalVisible, setModalVisible] = useState(false);
 
-  function toggle() {
-    setModalVisible(!modalVisible);
-  }
+  const toggle = () => setModalVisible(!modalVisible);
 
   return (
     <ScrollView>
-      <View style={{ height: 56, backgroundColor: bgColor }} />
-      <LotteryCard border={false} title={title} subTitle={subTitle} backgroundColor={bgColor} />
+      <ConfigurationModal isVisible={modalVisible} closeModal={toggle} />
+      <View style={{ height: 56, backgroundColor: color }} />
+      <LotteryCard border={false} lottery={lottery} />
       <View style={{ marginHorizontal: 24 }}>
         <CapText bold medium>Último sorteio</CapText>
         <CapText style={{ color: 'rgba(0,0,0,0.38)' }}>Concurso 2158 (08/06/19)</CapText>
-        <CapText style={{ color: bgColor }} top={8} bottom={12}>Acumulou!</CapText>
-        <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
-          <NumberDraw number="02" bgColor={bgColor} />
-          <NumberDraw number="14" bgColor={bgColor} />
-          <NumberDraw number="28" bgColor={bgColor} />
-          <NumberDraw number="32" bgColor={bgColor} />
-          <NumberDraw number="40" bgColor={bgColor} />
-          <NumberDraw number="53" bgColor={bgColor} />
-        </View>
+        <CapText style={{ color }} top={8} bottom={12}>Acumulou!</CapText>
+        <NumberContainer numbers={numbersDrawn} bgColor={color} />
         <Divider style={{ marginTop: 16 }} />
         <CapText top={20} bold medium>Seu jogo sorteado</CapText>
         <CapText style={{ color: 'rgba(0,0,0,0.38)' }} bottom={16}>Jogos sorteado com base nos últimos jogos</CapText>
-        <View style={{ flexDirection: 'row', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
-          <NumberDraw number="03" bgColor={bgColor} />
-          <NumberDraw number="15" bgColor={bgColor} />
-          <NumberDraw number="29" bgColor={bgColor} />
-          <NumberDraw number="33" bgColor={bgColor} />
-          <NumberDraw number="41" bgColor={bgColor} />
-          <NumberDraw number="54" bgColor={bgColor} />
-          <NumberDraw number="58" bgColor={bgColor} />
-          <NumberDraw number="60" bgColor={bgColor} />
-        </View>
+        <NumberContainer numbers={selectedNumbers} bgColor={color} />
       </View>
       <View style={{
         paddingHorizontal: 24,
@@ -60,7 +43,7 @@ export default function LotteryScreen({ navigation }) {
         justifyContent: 'space-between'
       }}
       >
-        <MSButton title="Gerar novo" background={bgColor} />
+        <MSButton title="Gerar novo" background={color} />
         <ButtonIcon icon={<ConfigWhell />} onPress={toggle} />
       </View>
         <ConfigurationModal isVisible={modalVisible} toggle={toggle}/>

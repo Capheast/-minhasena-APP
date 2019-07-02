@@ -23,9 +23,7 @@ export default function LotteryContainer({ lotteries }) {
           ListHeaderComponent={() => cardHeader(lottery.title, index)}
           renderItem={({ item }) => (
             <LotteryCard
-              title={item.title}
-              subTitle={item.subTitle}
-              backgroundColor={item.color}
+              lottery={item}
             />
           )}
           keyExtractor={item => item.title}
