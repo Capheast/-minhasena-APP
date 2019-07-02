@@ -24,7 +24,6 @@ export default function LotteryScreen({ navigation }) {
 
   return (
     <ScrollView>
-      <ConfigurationModal isVisible={modalVisible} closeModal={toggle} />
       <View style={{ height: 56, backgroundColor: color }} />
       <LotteryCard border={false} lottery={lottery} />
       <View style={{ marginHorizontal: 24 }}>
