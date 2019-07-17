@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import LotteryCard from '../LotteryCard';
 import { CapText } from '../../ui';
 
@@ -13,27 +13,21 @@ const cardHeader = (title, index) => {
   );
 };
 
-export default function LotteryContainer({ lotteries }) {
+export default function LotteryContainer() {
+  const lotteries = useSelector(({ data }) => data);
+
   return (
     <View>
-      {lotteries && lotteries.map((lottery, index) => (
-        <FlatList
-          key={lottery.title}
-          data={lottery.items}
-          ListHeaderComponent={() => cardHeader(lottery.title, index)}
-          renderItem={({ item }) => (
-            <LotteryCard
-              lottery={item}
-            />
-          )}
-          keyExtractor={item => item.title}
-        />
-      ))
-        }
+      {lotteries
+        && lotteries.map((lottery, index) => (
+          <FlatList
+            key={lottery.title}
+            data={lottery.items}
+            ListHeaderComponent={() => cardHeader(lottery.title, index)}
+            renderItem={({ item }) => <LotteryCard lottery={item} />}
+            keyExtractor={item => item.title}
+          />
+        ))}
     </View>
   );
 }
-
-LotteryContainer.propTypes = {
-  lotteries: PropTypes.arrayOf(PropTypes.object).isRequired
-};
