@@ -1,15 +1,12 @@
-import { createAppContainer } from 'react-navigation';
-import { FluidNavigator } from 'react-navigation-fluid-transitions';
-import HomeScreen from './screens/HomeScreen';
-import LotteryScreen from './screens/LotteryScreen';
+import React from 'react';
+import { Provider } from 'react-redux';
+import Store from './store';
+import Navigation from './routes';
 
-const MainNavigator = FluidNavigator({
-  Home: {
-    screen: HomeScreen,
-  },
-  Lottery: {
-    screen: LotteryScreen
-  }
-});
-
-export default createAppContainer(MainNavigator);
+export default function () {
+  return (
+    <Provider store={Store}>
+      <Navigation />
+    </Provider>
+  );
+}
