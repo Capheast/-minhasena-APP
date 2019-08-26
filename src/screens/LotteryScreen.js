@@ -1,17 +1,18 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { StatusBar, ScrollView, View } from 'react-native';
-import LotteryCard from '../components/partials/LotteryCard';
-import { CapText, Divider } from '../components/ui';
-import { MSButton } from '../components/partials/MSButton';
-import ConfigWhell from '../assets/images/ConfigWhell.svg';
-import { ButtonIcon } from '../components/partials/ButtonIcon';
-import { ConfigurationModal } from '../components/partials/ConfigurationModal';
-import NumberContainer from '../components/partials/NumberContainer';
+import { StatusBar, SafeAreaView } from 'react-native';
+import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import Card from '../components/Card';
+import colors from '../styles/colors';
+import { CapBackground, CapView } from '../styles';
+import NumberChoice from '../components/NumberChoice';
 
 export default function LotteryScreen({ navigation }) {
-  const lottery = navigation.getParam('lottery');
-  const { color, numbersDrawn } = lottery;
-  const selectedNumbers = [3, 15, 29, 33, 41, 54, 58, 60];
+  const index = navigation.getParam('index');
+  const lottery = useSelector(({ data }) => data.items[index]);
+  const {
+    title, subTitle, color, numbersDrawn
+  } = lottery;
 
   useLayoutEffect(() => {
     navigation.addListener('willFocus', () => {
@@ -23,29 +24,25 @@ export default function LotteryScreen({ navigation }) {
   const toggle = () => setModalVisible(!modalVisible);
 
   return (
-    <ScrollView>
-      <ConfigurationModal isVisible={modalVisible} closeModal={toggle} />
-      <View style={{ height: 56, backgroundColor: color }} />
-      <LotteryCard border={false} lottery={lottery} />
-      <View style={{ marginHorizontal: 24 }}>
-        <CapText bold medium>Último sorteio</CapText>
-        <CapText style={{ color: 'rgba(0,0,0,0.38)' }}>Concurso 2158 (08/06/19)</CapText>
-        <CapText style={{ color }} top={8} bottom={12}>Acumulou!</CapText>
-        <NumberContainer numbers={numbersDrawn} bgColor={color} />
-        <Divider style={{ marginTop: 16 }} />
-        <CapText top={20} bold medium>Seu jogo sorteado</CapText>
-        <CapText style={{ color: 'rgba(0,0,0,0.38)' }} bottom={16}>Jogos sorteado com base nos últimos jogos</CapText>
-        <NumberContainer numbers={selectedNumbers} bgColor={color} />
-      </View>
-      <View style={{
-        paddingHorizontal: 24,
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-      }}
-      >
-        <MSButton title="Gerar novo" background={color} />
-        <ButtonIcon icon={<ConfigWhell />} onPress={toggle} />
-      </View>
-    </ScrollView>
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.backgroundColor }}>
+      <CapBackground bgColor={color}>
+        <CapView minHeight={56} bgColor={color} />
+        <Card withoutRadius title={title} subTitle={subTitle} bgColor={color} />
+        <CapView bgColor="#FFFFFF" style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8 }}>
+          <CapView flex={1} mHorizontal={24}>
+            <NumberChoice
+              title="Seu jogo sorteado"
+              subTitle="Jogos sorteado com base nos últimos jogos"
+              color={color}
+              drawn={numbersDrawn}
+            />
+          </CapView>
+        </CapView>
+      </CapBackground>
+    </SafeAreaView>
   );
 }
+
+LotteryScreen.propTypes = {
+  navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired
+};
