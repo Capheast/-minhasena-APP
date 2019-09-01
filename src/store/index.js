@@ -1,17 +1,16 @@
 import { createStore } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from '@react-native-community/async-storage';
 
-const INITIAL_STATE = {
-  myDrawnGame: {},
-  data: {}
+import rootReducer from './reducers';
+
+const persistConfig = {
+  key: 'root',
+  storage,
 };
 
-const lotteries = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
-    case 'SET_LOTTERIES':
-      return { ...state, data: action.data };
-    default:
-      return state;
-  }
-};
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+const store = createStore(persistedReducer);
+const persistor = persistStore(store);
 
-export default createStore(lotteries);
+export { store, persistor };
