@@ -1,2 +1,3 @@
+export { default as colors } from './colors';
 export * from './container';
-export * from './typography';
+export { default as CapText } from './typography';
