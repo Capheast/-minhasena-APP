@@ -5,11 +5,11 @@ import LotteryScreen from '../screens/LotteryScreen';
 
 const MainNavigator = FluidNavigator({
   Home: {
-    screen: HomeScreen
+    screen: HomeScreen,
   },
   Lottery: {
-    screen: LotteryScreen
-  }
+    screen: LotteryScreen,
+  },
 });
 
 export default createAppContainer(MainNavigator);
