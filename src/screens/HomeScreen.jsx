@@ -1,34 +1,37 @@
+/* @flow */
 import React, { useLayoutEffect } from 'react';
 import { StatusBar, FlatList } from 'react-native';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { CapView, CapBackground } from '../styles';
+import { CapView, CapBackground, colors } from '../styles';
 import Card, { CardSkeleton } from '../components/Card';
 import CardHeader, { CardHeaderSkeleton } from '../components/CardHeader';
-import colors from '../styles/colors';
 import api from '../utils/api';
+
+type Props = {
+  navigation: Object,
+};
 
 const cards = Array(6).fill(0);
 
-export default function HomeScreen({ navigation }) {
+export default function HomeScreen({ navigation }: Props) {
   const dispatch = useDispatch();
-  const lotteries = useSelector(({ data }) => data);
+  const lotteriesList = useSelector(({ lotteries }) => lotteries.data);
 
   useLayoutEffect(() => {
     api('/setup').then(({ data }) => {
-      dispatch({ type: 'SET_LOTTERIES', data: data.data });
+      dispatch({ type: 'SET_LOTTERIES', data });
     });
 
     navigation.addListener('willFocus', () => {
       StatusBar.setBarStyle('dark-content');
     });
-  }, []);
+  }, [dispatch, navigation]);
 
   return (
     <CapView flex={1} mHorizontal={24} bgColor={colors.backgroundColor}>
       <CapView mTop={56}>
-        {lotteries.items && lotteries.items.length ? (
-          <CardHeader title={lotteries.title} />
+        {lotteriesList.items && lotteriesList.items.length ? (
+          <CardHeader title={lotteriesList.title} />
         ) : (
           <CardHeaderSkeleton />
         )}
@@ -36,10 +39,12 @@ export default function HomeScreen({ navigation }) {
       <CapBackground flex={1} showsVerticalScrollIndicator={false}>
         <CapView mBottom={56}>
           <FlatList
-            data={lotteries.items}
-            ListEmptyComponent={() => cards.map((card, index) => <CardSkeleton key={index} />)}
+            data={lotteriesList.items}
+            ListEmptyComponent={() =>
+              cards.map((card, index) => <CardSkeleton key={index} />)
+            }
             keyExtractor={item => item.title}
-            extraData={lotteries}
+            extraData={lotteriesList}
             ItemSeparatorComponent={() => <CapView margin={6} />}
             renderItem={({ item, index }) => (
               <Card
@@ -55,7 +60,3 @@ export default function HomeScreen({ navigation }) {
     </CapView>
   );
 }
-
-HomeScreen.propTypes = {
-  navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired
-};
