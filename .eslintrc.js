@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['airbnb/hooks', 'prettier', 'prettier/react'],
+  extends: ['airbnb', 'airbnb/hooks', 'prettier', 'prettier/react'],
   parser: 'babel-eslint',
   env: {
     jest: true,
@@ -7,6 +7,10 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: ['*.config.js', '**/*.test.jsx'] },
+    ],
   },
   plugins: ['prettier'],
 };
