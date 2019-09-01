@@ -1,18 +1,12 @@
 module.exports = {
-  extends: 'airbnb',
+  extends: ['airbnb/hooks', 'prettier', 'prettier/react'],
   parser: 'babel-eslint',
   env: {
-    jest: true
+    jest: true,
+    es6: true,
   },
   rules: {
-    'no-use-before-define': 'off',
-    'react/jsx-filename-extension': 'off',
-    'no-nested-ternary': 'off',
-    'import/prefer-default-export': 'off',
-    'comma-dangle': 'off',
-    'react/no-array-index-key': 'off'
+    'prettier/prettier': 'error',
   },
-  globals: {
-    fetch: false
-  }
+  plugins: ['prettier'],
 };
